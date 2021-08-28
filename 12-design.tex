@@ -438,29 +438,29 @@ Just a few of the ways it shows up are:
 \end{itemize}
 
 For example,
-if we want to count the number of values in an array that are larger than a threshold,
+if we want to count the number of positive values in an array,
 we can write:
 
 \begin{verbatim}
-def count_larger(array, threshold):
+def count_positive(array):
     number = 0
     for value in array:
-        if value > threshold:
+        if value >= 0:
             number = number + 1
     return number
 \end{verbatim}
 
-If we want to count the number that are smaller,
-we could write a \texttt{count\_smaller} function that differed by only one character
+If we want to count the number that are negative,
+we could write a \texttt{count\_negative} function that differed by only one character
 (replacing the \texttt{>} with \texttt{<}).
 Alternatively,
 we could write a generic function like this:
 
 \begin{verbatim}
-def count_interesting(array, test, threshold):
+def count_interesting(array, test):
     number = 0
     for value in array:
-        if test(value, threshold):
+        if test(value):
             number = number + 1
     return number
 \end{verbatim}
@@ -469,15 +469,15 @@ def count_interesting(array, test, threshold):
 then put each test in a function like this:
 
 \begin{verbatim}
-def is_greater(left, right):
-    return left > right
+def is_positive(value):
+    return value >= 0
 \end{verbatim}
 
 \noindent
 and then write something like:
 
 \begin{verbatim}
-count_interesting(pressures, is_greater, max_allowable_pressure)
+count_interesting(pressures, is_positive)
 \end{verbatim}
 
 Many features in modern languages,
@@ -616,8 +616,11 @@ it's that fairness, privacy, and security cannot be sprinkled on after the fact.
 For example,
 if a program is initially designed in a way that allows every user to see everyone else's data,
 adding privacy controls later will be expensive and almost certainly buggy.
+Programmers to this as the Principle of Least Privilege:
+every component in the system should require as few permissions as possible
+for as short as possible.
 
-There is much more to safety-conscious design than just data protection.
+But there is much more to safety-conscious design than just data protection.
 For example,
 if an application requires users to change their password every few weeks,
 \emph{security fatigue} will soon set in

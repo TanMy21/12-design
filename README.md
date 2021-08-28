@@ -336,36 +336,36 @@ the ways it shows up are:
 -   Loading modules based on configuration parameters (as in the earlier
     example of getting species information).
 
-For example, if we want to count the number of values in an array that
-are larger than a threshold, we can write:
+For example, if we want to count the number of positive values in an array, we
+can write:
 
-    def count_larger(array, threshold):
+    def count_positive(array):
         number = 0
         for value in array:
-            if value > threshold:
+            if value >= 0:
                 number = number + 1
         return number
 
-If we want to count the number that are smaller, we could write a
-`count_smaller` function that differed by only one character (replacing
+If we want to count the number that are negative, we could write a
+`count_negative` function that differed by only one character (replacing
 the `>` with `<`). Alternatively, we could write a generic function like
 this:
 
-    def count_interesting(array, test, threshold):
+    def count_interesting(array, test):
         number = 0
         for value in array:
-            if test(value, threshold):
+            if test(value):
                 number = number + 1
         return number
 
 then put each test in a function like this:
 
-    def is_greater(left, right):
-        return left > right
+    def is_positive(value):
+        return value >= 0
 
 and then write something like:
 
-    count_interesting(pressures, is_greater, max_allowable_pressure)
+    count_interesting(pressures, is_positive)
 
 Many features in modern languages, such as lazy evaluation in R or
 decorators in Python, leverage this insight, and taking advantage of it
@@ -446,7 +446,7 @@ For example, if a program is initially designed in a way that allows
 every user to see everyone else's data, adding privacy controls later
 will be expensive and almost certainly buggy.
 
-There is much more to safety-conscious design than just data protection.
+But there is much more to safety-conscious design than just data protection.
 For example, if an application requires users to change their password
 every few weeks, *security fatigue* will soon set in and people will
 choose less and less secure passwords [Smalls2021]. Similarly, programs
