@@ -14,7 +14,7 @@
 \\
 \bigskip
 \textbf{1} Third Bit\\
-{\ddag} Corresponding author, gvwilson@third-bit.com. \\
+{\ddag} Corresponding author, gvwilson@third-bit.com.
 \end{flushleft}
 
 \section*{Introduction}
@@ -45,17 +45,17 @@ These rules are taken from published sources,
 the author's personal experience,
 and discussions over thirty-five years with the creators of widely-used libraries and applications.
 
-\begin{quotation}
-  \noindent
-  As you read,
-  keep in mind that most computer science degrees don't teach software design.
-  Courses in which students analyze and critique classic programs are very rare,
-  so most software design is passed on through informal mentorship or rediscovered the hard way.
-\end{quotation}
-
 \subsection*{Acknowledgments}
 
-The author is grateful to Neil Brown, Matthias Bussonnier, Daniel Chen, Ildi Czeller, Damien Irving, and Donny Winston
+The author is grateful to Rebecca Barter,
+Neil Brown,
+Matthias Bussonnier,
+Daniel Chen,
+Ildi Czeller,
+Bradford Dykes,
+Damien Irving,
+Mandip Mistry,
+and Donny Winston
 for feedback on early versions of this paper.
 
 \section*{Rule 1: design after the fact}
@@ -76,12 +76,13 @@ such as ``extract function''
 (i.e., move some code out of the function its in
 and put it in a new function so that it can be called separately)
 and ``combine parameters into object''
-(which we we will revisit in Rule 3).
+(which we we will revisit in Rule~3).
 Just as the tidying steps in a data pipeline
 either convert messy data to a tidy layout or move the data from one tidy layout to another \cite{Wickham2017},
 most refactoring operations move code toward or between well-defined patterns \cite{Kerievsky2004}.
 
 \begin{quotation}
+  \noindent
   Many designers explain the design of their software
   by recapitulating its history \cite{Brown2011,Brown2012}.
   This is sometimes called \emph{challenge and response}:
@@ -137,7 +138,7 @@ because the reader only has to ``carry forward'' one piece of information at a t
 \section*{Rule 3: design in coherent levels}
 
 Another rule for designing functions is that
-each functions should be short, shallow, and single-purpose,
+each function should be short, shallow, and single-purpose,
 i.e.,
 it should implement a single mental operation
 so that it only takes up a single slot in short-term memory.
@@ -278,6 +279,9 @@ def enclose(p0, p1, nearness):
 \noindent
 Where we need the individual coordinates,
 we can refer to them as \texttt{p0.X}, \texttt{p0.Y}, and so on.
+Grouping related information together also aids code evolution (Rule~4):
+if, for example, we decide to use radial coordinates instead of Cartesian coordinates,
+we can change how points are represented without changing most of the functions that pass them around.
 
 \section*{Rule 6: use common patterns}
 
@@ -290,8 +294,10 @@ but they are powerful ideas that help us make sense of the world.
 Good programmers use \emph{design patterns} to structure their code,
 both to reduce the amount of thinking they have to do
 and because these patterns have proven to be useful in the past.
-Learning patterns helps make someone a better programmer \cite{Tichy2010};
-conforming to widely-understood patterns also makes code more comprehensible,
+Learning patterns helps make someone a better programmer,
+i.e.,
+there is causation, not just correlation \cite{Tichy2010}.
+Conforming to widely-understood patterns also makes code more comprehensible,
 just as dividing this paper into sections and a bibliography
 that are consistent with what you've read before
 makes it easier to read.
@@ -574,7 +580,7 @@ Among the drawings that working programmers often find helpful are:
   (Figure~\ref{er-diagram});
 \item
   system architecture diagrams showing the major components of an application
-  and how they interact (Figure~\ref{architecture};
+  and how they interact (Figure~\ref{architecture});
   and
 \item
   use case maps that show how activity flows through an architecture \cite{Reekie2006}

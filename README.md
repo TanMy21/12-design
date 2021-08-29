@@ -28,16 +28,11 @@ large programs. These rules are taken from published sources, the
 author's personal experience, and discussions over thirty-five years
 with the creators of widely-used libraries and applications.
 
-> As you read, keep in mind that most computer science degrees don't
-> teach software design. Courses in which students analyze and critique
-> classic programs are very rare, so most software design is passed on
-> through informal mentorship or rediscovered the hard way.
-
 ### Acknowledgments
 
-The author is grateful to Neil Brown, Matthias Bussonnier, Daniel Chen,
-Ildi Czeller, Damien Irving, and Donny Winston for feedback on early
-versions of this paper.
+The author is grateful to Rebecca Barter, Neil Brown, Matthias Bussonnier,
+Daniel Chen, Ildi Czeller, Bradford Dykes, Damien Irving, Mandip Mistry, and
+Donny Winston for feedback on early versions of this paper.
 
 ## Rule 1: design after the fact
 
@@ -102,7 +97,7 @@ has to "carry forward" one piece of information at a time.
 
 ## Rule 3: design in coherent levels
 
-Another rule for designing functions is that each functions should be
+Another rule for designing functions is that each function should be
 short, shallow, and single-purpose, i.e., it should implement a single
 mental operation so that it only takes up a single slot in short-term
 memory. The easiest way to check if this rule is being followed is to
@@ -217,13 +212,13 @@ names. For example, parasitism and symbiosis take many forms, and it's
 impossible to draw a precise boundary between them, but they are
 powerful ideas that help us make sense of the world.
 
-Good programmers use *design patterns* to structure their code, both to
-reduce the amount of thinking they have to do and because these patterns
-have proven to be useful in the past. Learning patterns helps make
-someone a better programmer [Tichy2010]; conforming to
-widely-understood patterns also makes code more comprehensible, just as
-dividing this paper into sections and a bibliography that are consistent
-with what you've read before makes it easier to read.
+Good programmers use *design patterns* to structure their code, both to reduce
+the amount of thinking they have to do and because these patterns have proven to
+be useful in the past. Learning patterns helps make someone a better programmer,
+i.e., there is causation, not just correlation [Tichy2010].  Conforming to
+widely-understood patterns also makes code more comprehensible, just as dividing
+this paper into sections and a bibliography that are consistent with what you've
+read before makes it easier to read.
 
 Patterns can be found at all scales of programming, from "most valuable"
 variables [Byckling2005] and doubly-nested loops to process the
